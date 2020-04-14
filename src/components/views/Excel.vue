@@ -1,96 +1,115 @@
-<template lang="html">
-  <div class="wrapper-jexcel">
-    <div class="introduction"><span>This is a list of my cars</span></div>
-    <input
-      type="button"
-      value="Add new row"
-      @click="jExcelObj.insertRow()"
-    /><br />
-    <div id="spreadsheet" ref="spreadsheet"></div>
+<template lang='html'>
+  <div class='wrapper-jexcel'>
+    <div id='spreadsheet' ref='spreadsheet'>
+      <input class="btn-primary" type="button" value="Add new row" @click="() => spreadsheet.insertRow()" />
+      <input class="btn-primary" type="button" value="Delete row" @click="() => spreadsheet.deleteRow()" />
+    </div>
   </div>
 </template>
 
 <script>
-import jexcelStyle from 'jexcel/dist/jexcel.css' // eslint-disable-line no-unused-vars
 import jexcel from 'jexcel' // eslint-disable-line no-unused-vars
+import 'jexcel/dist/jexcel.css' // eslint-disable-line no-unused-vars
+import axios from 'axios'
+
+var temp = {}
+var changed = function(instance, cell, x, y, value) {
+  x = parseInt(x)
+  y = parseInt(y)
+  var datatemp = []
+  console.log(datatemp)
+  datatemp[0] = y + 1
+  axios.get('http://localhost:8024/api/mahasiswa/' + datatemp[0]).then((response) => {
+    console.log(response.data)
+    datatemp = Object.values(response.data[0])
+    datatemp[x] = value
+    console.log(datatemp)
+    axios({
+      method: 'put',
+      url: 'http://localhost:8024/api/mahasiswa/' + datatemp[0],
+      data: {
+        id: datatemp[0],
+        nama: datatemp[1],
+        nrp: datatemp[2],
+        telp: datatemp[3]
+      }
+    }).then((response) => {
+      console.log(response.data)
+    })
+  })
+  this.load()
+}
+
+var insertrow = function(instance, id) {
+  var x = parseInt(id) + 2
+  console.log(x)
+  axios({
+    method: 'post',
+    url: 'http://localhost:8024/api/mahasiswa/',
+    data: {
+      id: x,
+      nama: '',
+      nrp: 0,
+      telp: 0
+    }
+  }).then((response) => {
+    console.log(response.data)
+  }).catch(err => {
+    console.log(err)
+  })
+  this.load()
+}
+var deleterow = function(instance, id) {
+  var tes
+  axios({
+    method: 'get',
+    url: 'http://localhost:8024/api/mahasiswa/',
+    data: {
+    }
+  }).then((response) => {
+    tes = Object.keys(response.data[id]).map(function (key) {
+      console.log(response.data[id])
+      return response.data[id][key]
+    })
+    axios.delete('http://localhost:8024/api/mahasiswa/' + tes[0])
+  })
+  this.load()
+}
 
 export default {
   name: 'jexcel',
-  data() {
-    return {
-      myCars: [
-        [
-          'Jazz',
-          'Honda',
-          '2019-02-12',
-          imageExample,
-          true,
-          '$ 2.000,00',
-          '#777700'
-        ],
-        ['Civic', 'Honda', '2018-07-11', '', true, '$ 4.000,01', '#007777'],
-        ['Z4', 'BMW', '2017-11-24', '', false, '$ 324.072,58', '#700d0d'],
-        [
-          'Boxter S',
-          'Porshe',
-          '2019-08-24',
-          '',
-          true,
-          '$ 307.839,45',
-          '#0e0438'
-        ]
-      ]
-    }
-  },
-  computed: {
-    jExcelOptions() {
-      return {
-        data: this.myCars,
-        columns: [
-          { type: 'text', title: 'Car', width: '120px' },
-          {
-            type: 'dropdown',
-            title: 'Make',
-            width: '250px',
-            source: ['Alfa Romeo', 'Audi', 'BMW', 'Honda', 'Porshe']
-          },
-          { type: 'calendar', title: 'Available', width: '250px' },
-          { type: 'image', title: 'Photo', width: '120px' },
-          { type: 'checkbox', title: 'Stock', width: '80px' },
-          {
-            type: 'numeric',
-            title: 'Price',
-            width: '120px',
-            mask: '$ #.##,00',
-            decimal: ','
-          },
-          { type: 'color', width: '100px', render: 'square' }
-        ]
-      }
-    }
+  mounted: function () {
+    this.load()
   },
   methods: {
-    insertRowc() {
-      console.log(this)
-      // this.spreadsheet.insertRow()
+    load() {
+      axios.get('http://localhost:8024/api/mahasiswa/').then(res => {
+        temp = res.data
+        console.log(temp)
+        var options = {
+          // url: 'http://localhost:3000/mahasiswa',
+          data: temp,
+          onchange: changed,
+          oninsertrow: insertrow,
+          ondeleterow: deleterow,
+          allowToolbar: true,
+          columns: [
+            { type: 'hidden', title: 'ID', width: '120px', name: 'mhs_id' },
+            { type: 'text', title: 'Nama', width: '120px', name: 'nama' },
+            { type: 'numeric', title: 'NRP', width: '120px', name: 'nrp' },
+            { type: 'numeric', title: 'No. Telpon', width: '120px', name: 'telp' }
+          ]
+        }
+        let spreadsheet = jexcel(this.$el, options)
+        Object.assign(this, { spreadsheet })
+      })
     }
-  },
-  mounted: function() {
-    // console.log(this.jExcelOptions)
-    // console.log(this.$refs['spreadsheet'])
-    const jExcelObj = jexcel(this.$refs['spreadsheet'], this.jExcelOptions)
-    // Object.assign(this, jExcelObj) // pollutes component instance
-    Object.assign(this, { jExcelObj }) // tucks all methods under jExcelObj object in component instance
-    // console.log(this.jExcelObj)
   }
 }
-
-const imageExample =
-  'https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/3c/07/52/3c075237-d3cb-afed-fadb-4421ec3955a2/source/256x256bb.jpg'
 </script>
 
 <style lang='css' scoped>
-.introduction {
+.introduction { 
   font-size: 14px;
   padding: 0.5em;
   margin-bottom: 0.3em;

@@ -1,0 +1,19 @@
+[{
+	"id": 1,
+	"name": "test",
+	"class": "A",
+	"rate": 100.1,
+	"open": true
+}, {
+	"id": 2,
+	"name": "halo",
+	"class": "",
+	"rate": 0,
+	"open": false
+}, {
+	"id": 3,
+	"name": "yes",
+	"class": "",
+	"rate": 0,
+	"open": false
+}]
