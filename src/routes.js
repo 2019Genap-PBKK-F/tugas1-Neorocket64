@@ -11,10 +11,15 @@ import AccessView from './components/views/Access.vue'
 import ServerView from './components/views/Server.vue'
 import ReposView from './components/views/Repos.vue'
 import Excel from './components/views/Excel.vue'
-import CapaianUnit from './components/views/Capaian_Unit.vue'
-import Datadasar from './components/views/Datadasar.vue'
-import KategoriUnit from './components/views/KategoriUnit.vue'
-import Unit from './components/views/Unit.vue'
+import CapaianUnit from './components/views/tables/Capaian_Unit.vue'
+import Datadasar from './components/views/tables/Datadasar.vue'
+import JenisSatker from './components/views/tables/Jenissatker.vue'
+import Periode from './components/views/tables/Periode.vue'
+import MasterIndikator from './components/views/tables/Masterindikator.vue'
+import SatuanKerja from './components/views/tables/Satuankerja.vue'
+import IndikatorPeriode from './components/views/tables/Indikator_Periode.vue'
+import IndikatorSatuanKerja from './components/views/tables/Indikator_Satuankerja.vue'
+import IndikatorSatuanKerjaLog from './components/views/tables/Indikator_Satuankerja_log.vue'
 
 // Routes
 const routes = [
@@ -73,21 +78,46 @@ const routes = [
         name: 'Datadasar',
         meta: {description: 'datadasar worksheet'}
       }, {
-        path: 'kategoriunit',
-        component: KategoriUnit,
-        name: 'Kategori Unit',
-        meta: {description: 'kategori unit worksheet'}
+        path: 'jenissatker',
+        component: JenisSatker,
+        name: 'Jenis Satuan Kerja',
+        meta: {description: 'jenissatker worksheet'}
       }, {
-        path: 'unit',
-        component: Unit,
-        name: 'Unit',
-        meta: {description: 'unit worksheet'}
+        path: 'periode',
+        component: Periode,
+        name: 'Periode',
+        meta: {description: 'periode worksheet'}
+      }, {
+        path: 'masterindikator',
+        component: MasterIndikator,
+        name: 'Master Indikator',
+        meta: {description: 'masterindikator worksheet'}
+      }, {
+        path: 'satuankerja',
+        component: SatuanKerja,
+        name: 'Satuan Kerja',
+        meta: {description: 'satuankerja worksheet'}
+      }, {
+        path: 'indikatorperiode',
+        component: IndikatorPeriode,
+        name: 'Indikator Periode',
+        meta: {description: 'indikatorperiode worksheet'}
+      }, {
+        path: 'indikatorsatuankerja',
+        component: IndikatorSatuanKerja,
+        name: 'Indikator Satuan Kerja',
+        meta: {description: 'indikatorsatuankerja worksheet'}
       }, {
         path: 'capaianunit',
         component: CapaianUnit,
         name: 'Capaian Unit',
-        meta: {description: 'capaian unit worksheet'}
-      }
+        meta: {description: 'capaianunit worksheet'}
+      }, {
+        path: 'indikatorsatuankerjalog',
+        component: IndikatorSatuanKerjaLog,
+        name: 'Log Indikator Satuan Kerja',
+        meta: {description: 'log sheet untuk indikatorsatuankerja'}
+      },
     ]
   }, {
     // not found handler
