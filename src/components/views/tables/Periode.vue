@@ -32,8 +32,8 @@ export default {
           columns: [
             { type: 'hidden', title: 'ID', width: '120px', name: 'id' },
             { type: 'text', title: 'Nama', width: '150px', name: 'nama' },
-            { type: 'text', title: 'Create Date', width: '120px', name: 'create_date' },
-            { type: 'text', title: 'Last Update', width: '120px', name: 'last_update' }
+            { type: 'text', title: 'Create Date', width: '120px', name: 'create_date', readOnly: true },
+            { type: 'text', title: 'Last Update', width: '120px', name: 'last_update', readOnly: true }
           ]
         }
         let spreadsheet = jexcel(this.$el, options)

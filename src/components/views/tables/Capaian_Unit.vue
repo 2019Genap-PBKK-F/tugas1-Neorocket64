@@ -31,9 +31,9 @@ export default {
           allowInsertRow: false,
           allowManualInsertRow: false,
           columns: [
-            { type: 'dropdown', title: 'Satuan Kerja', width: '120px', url: 'http://localhost:8024/api/satuankerjaid/', autocomplete: true },
+            { type: 'dropdown', title: 'Satuan Kerja', width: '120px', url: 'http://localhost:8024/api/satuankerjaname/', autocomplete: true },
             { type: 'dropdown', title: 'Data Dasar', width: '120px', url: 'http://localhost:8024/api/datadasarname/', autocomplete: true },
-            { type: 'text', title: 'Waktu', width: '120px' },
+            { type: 'text', title: 'Waktu', width: '120px', readOnly: true },
             { type: 'numeric', title: 'Capaian', width: '120px' }
           ]
         }
@@ -52,7 +52,7 @@ export default {
           id_satker: index[0],
           id_datadasar: index[1],
           waktu: index[2],
-          capaian: index[3],
+          capaian: index[3]
         })
           .then(response => {
             console.log(response.data)

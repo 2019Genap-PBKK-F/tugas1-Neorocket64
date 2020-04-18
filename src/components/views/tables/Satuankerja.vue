@@ -31,13 +31,13 @@ export default {
           responsive: true,
           columns: [
             { type: 'hidden', title: '#', width: '120px' },
-            { type: 'text', title: 'ID', width: '120px', readOnly:true },
+            { type: 'text', title: 'ID', width: '120px', readOnly: true },
             { type: 'dropdown', title: 'Jenis', width: '120px', url: 'http://localhost:8024/api/jenissatkername/', autocomplete: true },
             { type: 'dropdown', title: 'Induk', width: '120px', url: 'http://localhost:8024/api/satuankerjaname/', autocomplete: true },
             { type: 'text', title: 'Nama', width: '120px' },
             { type: 'text', title: 'E-Mail', width: '120px' },
-            { type: 'text', title: 'Create Date', width: '120px', name: 'create_date' },
-            { type: 'text', title: 'Last Update', width: '120px', name: 'last_update' },
+            { type: 'text', title: 'Create Date', width: '120px', name: 'create_date', readOnly: true },
+            { type: 'text', title: 'Last Update', width: '120px', name: 'last_update', readOnly: true },
             { type: 'text', title: 'Expired Date', width: '120px', name: 'expired_date' }
           ]
         }

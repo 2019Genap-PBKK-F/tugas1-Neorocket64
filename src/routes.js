@@ -117,7 +117,7 @@ const routes = [
         component: IndikatorSatuanKerjaLog,
         name: 'Log Indikator Satuan Kerja',
         meta: {description: 'log sheet untuk indikatorsatuankerja'}
-      },
+      }
     ]
   }, {
     // not found handler

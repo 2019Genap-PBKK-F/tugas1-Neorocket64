@@ -50,7 +50,7 @@ export default {
         axios.put('http://localhost:8024/api/indikator_periode/' + old[0] + '&' + old[1], {
           id_master: index[0],
           id_periode: index[1],
-          bobot: index[2],
+          bobot: index[2]
         })
           .then(response => {
             console.log(response.data)

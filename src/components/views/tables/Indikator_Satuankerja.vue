@@ -33,11 +33,11 @@ export default {
           columns: [
             { type: 'dropdown', title: 'Periode', width: '120px', url: 'http://localhost:8024/api/periodename/', autocomplete: true },
             { type: 'dropdown', title: 'Indikator', width: '120px', url: 'http://localhost:8024/api/masterindikatorname/', autocomplete: true },
-            { type: 'dropdown', title: 'Satuan Kerja', width: '120px', url: 'http://localhost:8024/api/satuankerjaid/', autocomplete: true },
+            { type: 'dropdown', title: 'Satuan Kerja', width: '120px', url: 'http://localhost:8024/api/satuankerjaname/', autocomplete: true },
             { type: 'numeric', title: 'Bobot', width: '120px' },
             { type: 'numeric', title: 'Target', width: '120px' },
             { type: 'numeric', title: 'Capaian', width: '120px' },
-            { type: 'text', title: 'Last Update', width: '120px' }
+            { type: 'text', title: 'Last Update', width: '120px', readOnly: true }
           ]
         }
         let spreadsheet = jexcel(this.$el, options)
@@ -58,7 +58,7 @@ export default {
           bobot: index[3],
           targett: index[4],
           capaian: index[5],
-          last_update: index[6],
+          last_update: index[6]
         })
           .then(response => {
             console.log(response.data)

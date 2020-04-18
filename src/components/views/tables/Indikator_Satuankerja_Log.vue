@@ -27,7 +27,7 @@ export default {
           columns: [
             { type: 'text', title: 'Periode', width: '120px', url: 'http://localhost:8024/api/periodename/' },
             { type: 'text', title: 'Indikator', width: '120px', url: 'http://localhost:8024/api/masterindikatorname/' },
-            { type: 'text', title: 'Satuan Kerja', width: '120px', url: 'http://localhost:8024/api/satuankerjaid/' },
+            { type: 'text', title: 'Satuan Kerja', width: '120px', url: 'http://localhost:8024/api/satuankerjaname/' },
             { type: 'numeric', title: 'Capaian', width: '120px' },
             { type: 'text', title: 'Create Date', width: '120px' }
           ]

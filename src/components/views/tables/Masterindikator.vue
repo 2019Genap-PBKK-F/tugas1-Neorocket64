@@ -36,8 +36,8 @@ export default {
             { type: 'text', title: 'Nama', width: '120px' },
             { type: 'text', title: 'Deskripsi', width: '170px' },
             { type: 'numeric', title: 'Default Bobot', width: '120px' },
-            { type: 'text', title: 'Create Date', width: '120px', name: 'create_date' },
-            { type: 'text', title: 'Last Update', width: '120px', name: 'last_update' },
+            { type: 'text', title: 'Create Date', width: '120px', name: 'create_date', readOnly: true },
+            { type: 'text', title: 'Last Update', width: '120px', name: 'last_update', readOnly: true },
             { type: 'text', title: 'Expired Date', width: '120px', name: 'expired_date' }
           ]
         }
