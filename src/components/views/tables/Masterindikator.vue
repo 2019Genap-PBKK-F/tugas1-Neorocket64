@@ -72,8 +72,8 @@ export default {
         method: 'post',
         url: 'http://localhost:8024/api/masterindikator/',
         data: {
-          id_penyebut: NULL,
-          id_pembilang: NULL,
+          id_penyebut: 1,
+          id_pembilang: 1,
           nama: '',
           deskripsi: '',
           default_bobot: 0.0,

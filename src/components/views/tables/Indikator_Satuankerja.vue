@@ -56,7 +56,7 @@ export default {
           id_master: index[1],
           id_satker: index[2],
           bobot: index[3],
-          target: index[4],
+          targett: index[4],
           capaian: index[5],
           last_update: index[6],
         })
