@@ -13,6 +13,7 @@ import ReposView from './components/views/Repos.vue'
 import Excel from './components/views/Excel.vue'
 import CapaianUnit from './components/views/tables/Capaian_Unit.vue'
 import Datadasar from './components/views/tables/Datadasar.vue'
+import Aspek from './components/views/tables/Aspek.vue'
 import JenisSatker from './components/views/tables/Jenissatker.vue'
 import Periode from './components/views/tables/Periode.vue'
 import MasterIndikator from './components/views/tables/Masterindikator.vue'
@@ -77,6 +78,11 @@ const routes = [
         component: Datadasar,
         name: 'Datadasar',
         meta: {description: 'datadasar worksheet'}
+      }, {
+        path: 'aspek',
+        component: Aspek,
+        name: 'Aspek',
+        meta: {description: 'aspek worksheet'}
       }, {
         path: 'jenissatker',
         component: JenisSatker,

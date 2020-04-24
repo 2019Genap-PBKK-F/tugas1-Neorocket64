@@ -19,10 +19,10 @@ export default {
   },
   methods: {
     load() {
-      axios.get('http://localhost:8024/api/datadasar/').then(res => {
+      axios.get('http://localhost:8024/api/aspek/').then(res => {
         console.log(res.data)
         var options = {
-          // url: 'http://localhost:3000/datadasar',
+          // url: 'http://localhost:3000/aspek',
           data: res.data,
           onchange: this.changed,
           oninsertrow: this.insertrow,
@@ -31,10 +31,8 @@ export default {
           responsive: true,
           columns: [
             { type: 'hidden', title: 'ID', width: '120px', name: 'id' },
-            { type: 'text', title: 'Nama', width: '150px', name: 'nama' },
-            { type: 'text', title: 'Create Date', width: '120px', name: 'create_date', readOnly: true },
-            { type: 'text', title: 'Last Update', width: '120px', name: 'last_update', readOnly: true },
-            { type: 'text', title: 'Expired Date', width: '120px', name: 'expired_date' }
+            { type: 'text', title: 'Aspek', width: '150px', name: 'aspek' },
+            { type: 'text', title: 'Komponen', width: '150px', name: 'komponen_aspek' }
           ]
         }
         let spreadsheet = jexcel(this.$el, options)
@@ -42,16 +40,14 @@ export default {
       })
     },
     changed(instance, cell, columns, row, value) {
-      axios.get('http://localhost:8024/api/datadasar/').then(response => {
+      axios.get('http://localhost:8024/api/aspek/').then(response => {
         var index = Object.values(response.data[row])
         index[columns] = value
         console.log('index selected: ' + index)
         axios
-          .put('http://localhost:8024/api/datadasar/' + index[0], {
+          .put('http://localhost:8024/api/aspek/' + index[0], {
             nama: index[1],
-            create_date: index[2],
-            last_update: index[3],
-            expired_date: index[4]
+            komponen_aspek: index[2]
           })
           .then(response => {
             console.log(response.data)
@@ -61,10 +57,10 @@ export default {
     insertrow(instance) {
       axios({
         method: 'post',
-        url: 'http://localhost:8024/api/datadasar/',
+        url: 'http://localhost:8024/api/aspek/',
         data: {
-          nama: 'test',
-          expired_date: '0000-00-00T00:00:00.000Z'
+          aspek: 'test',
+          komponen_aspek: 'test komponen'
         }
       })
         .then(response => {
@@ -75,11 +71,11 @@ export default {
         })
     },
     deleterow(instance, row) {
-      axios.get('http://localhost:8024/api/datadasar/').then(response => {
+      axios.get('http://localhost:8024/api/aspek/').then(response => {
         var index = Object.values(response.data[row])
         console.log('Index: ' + index)
         console.log('Deleting row: ' + row)
-        axios.delete('http://localhost:8024/api/datadasar/' + index[0])
+        axios.delete('http://localhost:8024/api/aspek/' + index[0])
       })
     }
   }

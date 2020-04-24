@@ -31,10 +31,11 @@ export default {
           responsive: true,
           columns: [
             { type: 'hidden', title: 'ID', width: '120px' },
-            { type: 'dropdown', title: 'Penyebut', width: '120px', url: 'http://localhost:8024/api/datadasarname/', autocomplete: true },
             { type: 'dropdown', title: 'Pembilang', width: '120px', url: 'http://localhost:8024/api/datadasarname/', autocomplete: true },
-            { type: 'text', title: 'Nama', width: '120px' },
-            { type: 'text', title: 'Deskripsi', width: '170px' },
+            { type: 'dropdown', title: 'Penyebut', width: '120px', url: 'http://localhost:8024/api/datadasarname/', autocomplete: true },
+            { type: 'dropdown', title: 'Aspek', width: '120px', url: 'http://localhost:8024/api/aspekname/', autocomplete: true },
+            { type: 'text', title: 'Nama', width: '200px' },
+            { type: 'text', title: 'Deskripsi', width: '200px' },
             { type: 'numeric', title: 'Default Bobot', width: '120px' },
             { type: 'text', title: 'Create Date', width: '120px', name: 'create_date', readOnly: true },
             { type: 'text', title: 'Last Update', width: '120px', name: 'last_update', readOnly: true },
@@ -55,12 +56,13 @@ export default {
             id: index[0],
             id_penyebut: index[1],
             id_pembilang: index[2],
-            nama: index[3],
-            deskripsi: index[4],
-            default_bobot: index[5],
-            create_date: index[6],
-            last_update: index[7],
-            expired_date: index[8]
+            id_aspek: index[3],
+            nama: index[4],
+            deskripsi: index[5],
+            default_bobot: index[6],
+            create_date: index[7],
+            last_update: index[8],
+            expired_date: index[9]
           })
           .then(response => {
             console.log(response.data)
@@ -74,6 +76,7 @@ export default {
         data: {
           id_penyebut: 1,
           id_pembilang: 1,
+          id_aspek: 1,
           nama: '',
           deskripsi: '',
           default_bobot: 0.0,
