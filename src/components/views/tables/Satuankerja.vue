@@ -73,10 +73,7 @@ export default {
           id_jns_satker: 1,
           id_induk_satker: 1,
           nama: '',
-          email: '',
-          create_date: '0000-00-00T00:00:00.000Z',
-          last_update: '0000-00-00T00:00:00.000Z',
-          expired_date: '0000-00-00T00:00:00.000Z'
+          email: ''
         }
       })
         .then(response => {

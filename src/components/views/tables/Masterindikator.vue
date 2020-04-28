@@ -54,8 +54,8 @@ export default {
         axios
           .put('http://localhost:8024/api/masterindikator/' + index[0], {
             id: index[0],
-            id_penyebut: index[1],
-            id_pembilang: index[2],
+            id_pembilang: index[1],
+            id_penyebut: index[2],
             id_aspek: index[3],
             nama: index[4],
             deskripsi: index[5],
@@ -79,10 +79,7 @@ export default {
           id_aspek: 1,
           nama: '',
           deskripsi: '',
-          default_bobot: 0.0,
-          create_date: '0000-00-00T00:00:00.000Z',
-          last_update: '0000-00-00T00:00:00.000Z',
-          expired_date: '0000-00-00T00:00:00.000Z'
+          default_bobot: 0.0
         }
       })
         .then(response => {
