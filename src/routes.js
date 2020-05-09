@@ -21,6 +21,10 @@ import SatuanKerja from './components/views/tables/Satuankerja.vue'
 import IndikatorPeriode from './components/views/tables/Indikator_Periode.vue'
 import IndikatorSatuanKerja from './components/views/tables/Indikator_Satuankerja.vue'
 import IndikatorSatuanKerjaLog from './components/views/tables/Indikator_Satuankerja_log.vue'
+import Dosen from './components/views/new/dosen.vue'
+import Abmas from './components/views/new/abmas.vue'
+import Penelitian from './components/views/new/penelitian.vue'
+import Publikasi from './components/views/new/publikasi.vue'
 
 // Routes
 const routes = [
@@ -123,6 +127,26 @@ const routes = [
         component: IndikatorSatuanKerjaLog,
         name: 'Log Indikator Satuan Kerja',
         meta: {description: 'log sheet untuk indikatorsatuankerja'}
+      }, {
+        path: 'dosen',
+        component: Dosen,
+        name: 'Dosen',
+        meta: {description: 'dosen worksheet'}
+      }, {
+        path: 'abmas',
+        component: Abmas,
+        name: 'Abmas',
+        meta: {description: 'abmas worksheet'}
+      }, {
+        path: 'penelitian',
+        component: Penelitian,
+        name: 'Penelitian',
+        meta: {description: 'penelitian worksheet'}
+      }, {
+        path: 'publikasi',
+        component: Publikasi,
+        name: 'Publikasi',
+        meta: {description: 'publikasi worksheet'}
       }
     ]
   }, {

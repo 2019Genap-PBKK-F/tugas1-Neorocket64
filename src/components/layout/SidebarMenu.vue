@@ -14,6 +14,32 @@
       </a>
     </router-link>
 
+    <li class="header">TABLES</li>
+    <router-link tag="li" class="pageLink" to="/dosen">
+      <a>
+        <i class="fa fa-table-dosen"></i>
+        <span class="page">Dosen</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/abmas">
+      <a>
+        <i class="fa fa-table-abmas"></i>
+        <span class="page">Abmas</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/penelitian">
+      <a>
+        <i class="fa fa-table-penelitian"></i>
+        <span class="page">Penelitian</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/publikasi">
+      <a>
+        <i class="fa fa-table-publikasi"></i>
+        <span class="page">Publikasi</span>
+      </a>
+    </router-link>
+
     <li class="header">ME</li>
     <router-link tag="li" class="pageLink" to="/tasks">
       <a>
